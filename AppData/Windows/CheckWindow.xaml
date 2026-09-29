@@ -1,0 +1,41 @@
+﻿<Window x:Class="WPFbowlingKurs.AppData.Windows.CheckWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Чек" Height="720" Width="420" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="{StaticResource BackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="brdCheck" Grid.Row="0" Background="White" Margin="15" Padding="15" BorderBrush="Gray" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="БОУЛИНГ-КЛУБ «ГОЛДЕН СТРАЙК»" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
+                <TextBlock Text="г. Санкт-Петербург" HorizontalAlignment="Center" FontSize="12"/>
+                <TextBlock Text="--------------------------------------------" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="tbNumber" FontSize="13" Margin="0,2"/>
+                <TextBlock x:Name="tbDate" FontSize="13" Margin="0,2"/>
+                <TextBlock x:Name="tbClient" FontSize="13" Margin="0,2" TextWrapping="Wrap"/>
+                <TextBlock x:Name="tbLane" FontSize="13" Margin="0,2"/>
+                <TextBlock x:Name="tbTime" FontSize="13" Margin="0,2"/>
+                <TextBlock x:Name="tbItems" FontSize="13" Margin="0,2" TextWrapping="Wrap"/>
+                <TextBlock x:Name="tbPayment" FontSize="13" Margin="0,2"/>
+                <TextBlock x:Name="tbStatus" FontSize="13" Margin="0,2"/>
+                <TextBlock Text="--------------------------------------------" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="tbTotal" FontSize="17" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,4"/>
+                <Image x:Name="imgQr" Width="190" Height="190" Margin="0,8,0,4"/>
+                <TextBlock Text="Отсканируйте QR-код для оплаты" HorizontalAlignment="Center" FontSize="12"/>
+                <TextBlock x:Name="tbCashier" HorizontalAlignment="Center" FontSize="11" Margin="0,6,0,0"/>
+                <TextBlock Text="Спасибо, что выбрали нас!" HorizontalAlignment="Center" FontSize="12" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <Button x:Name="btnPrint" Content="Печать" Style="{StaticResource BtnMain}" Width="130" Click="btnPrint_Click"/>
+            <Button x:Name="btnClose" Content="Закрыть" Style="{StaticResource BtnMain}" Width="130" Click="btnClose_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

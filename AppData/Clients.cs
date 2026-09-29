@@ -1,0 +1,28 @@
+﻿namespace WPFbowlingKurs.AppData
+{
+    using System;
+    using System.Collections.Generic;
+
+    public partial class Clients
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Clients()
+        {
+            this.Bookings = new HashSet<Bookings>();
+            this.EventRegistrations = new HashSet<EventRegistrations>();
+        }
+
+        public int Id { get; set; }
+        public string FullName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public System.DateTime RegistrationDate { get; set; }
+        public int Points { get; set; }
+        public bool IsSubscribedToAl { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bookings> Bookings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EventRegistrations> EventRegistrations { get; set; }
+    }
+}

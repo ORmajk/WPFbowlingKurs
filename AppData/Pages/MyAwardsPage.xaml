@@ -1,0 +1,62 @@
+﻿<Page x:Class="WPFbowlingKurs.AppData.Pages.MyAwardsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WPFbowlingKurs.AppData.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="MyAwardsPage" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid Background="{StaticResource BackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource HeaderColor}">
+            <TextBlock Text="Мои баллы и награды" FontSize="22" Margin="30,0,0,0" Foreground="#FF4E5E38"/>
+            <Button x:Name="btnBack" Content="Назад" Style="{StaticResource BtnMain}" Width="100" HorizontalAlignment="Right"
+                    Margin="0,0,20,0" Click="btnBack_Click"/>
+        </Grid>
+
+        <Border Grid.Row="1" Background="{StaticResource TextColor}" CornerRadius="10" Margin="20,10" Padding="15">
+            <StackPanel>
+                <TextBlock x:Name="tbPoints" FontSize="20" FontWeight="Bold" Foreground="#FF4E5E38"/>
+                <TextBlock x:Name="tbNext" Margin="0,6,0,3"/>
+                <ProgressBar x:Name="pbNext" Height="18" Foreground="{StaticResource ButtonColor}" Maximum="100"/>
+                <TextBlock Margin="0,8,0,0" FontSize="12" TextWrapping="Wrap"
+                           Text="Как получить баллы: бронирование +10, запись на мероприятие +5, экспорт данных +2. Баллами можно оплатить до 30% брони (1 балл = 1 руб.) или подключить AI-помощника."/>
+                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                    <TextBlock x:Name="tbAi"/>
+                    <Button x:Name="btnAi" Content="Подключить AI за 100 баллов" Style="{StaticResource BtnMain}" Width="280"
+                            Margin="15,0,0,0" Click="btnAi_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <ListView x:Name="lvAwards" Grid.Row="2" Margin="15,5,15,10" Background="Transparent" BorderThickness="0"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="220" Height="130" Background="{Binding Back}" BorderBrush="{StaticResource HeaderColor}"
+                            BorderThickness="2" CornerRadius="8" Padding="10" Margin="3">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Icon}" FontSize="26" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center"
+                                       TextAlignment="Center"/>
+                            <TextBlock Text="{Binding Info}" FontSize="11" TextWrapping="Wrap" HorizontalAlignment="Center"
+                                       TextAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

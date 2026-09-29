@@ -1,0 +1,56 @@
+﻿<Page x:Class="WPFbowlingKurs.AppData.Pages.ClientMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WPFbowlingKurs.AppData.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="ClientMenuPage" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid Background="{StaticResource BackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource HeaderColor}">
+            <TextBlock Text="Голден Страйк" FontSize="22" Margin="30,0,0,0" Foreground="#FF4E5E38"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock x:Name="tbUser" Margin="0,0,15,0"/>
+                <Button x:Name="btnExit" Content="Выход" Style="{StaticResource BtnMain}" Width="100" Margin="0,0,20,0"
+                        Click="btnExit_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <GroupBox Grid.Row="1" Header="Личный кабинет" Margin="20,10" FontFamily="Verdana" FontSize="14">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="tbPoints" Grid.Row="0" Grid.Column="0" Margin="5" FontWeight="Bold"/>
+                <TextBlock x:Name="tbAwards" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                <TextBlock x:Name="tbAi" Grid.Row="0" Grid.Column="2" Margin="5"/>
+                <TextBlock x:Name="tbNextBooking" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5"/>
+                <TextBlock x:Name="tbEvents" Grid.Row="1" Grid.Column="2" Margin="5"/>
+            </Grid>
+        </GroupBox>
+
+        <WrapPanel Grid.Row="2" Margin="20,10" HorizontalAlignment="Center">
+            <Button x:Name="btnLanes" Content="Дорожки" Style="{StaticResource BtnMain}" Width="220" Height="60" FontSize="16" Click="btnLanes_Click"/>
+            <Button x:Name="btnNewBooking" Content="Забронировать" Style="{StaticResource BtnMain}" Width="220" Height="60" FontSize="16" Click="btnNewBooking_Click"/>
+            <Button x:Name="btnMyBookings" Content="Мои брони" Style="{StaticResource BtnMain}" Width="220" Height="60" FontSize="16" Click="btnMyBookings_Click"/>
+            <Button x:Name="btnEvents" Content="Мероприятия" Style="{StaticResource BtnMain}" Width="220" Height="60" FontSize="16" Click="btnEvents_Click"/>
+            <Button x:Name="btnAwards" Content="Баллы и награды" Style="{StaticResource BtnMain}" Width="220" Height="60" FontSize="16" Click="btnAwards_Click"/>
+            <Button x:Name="btnAi" Content="AI-помощник" Style="{StaticResource BtnMain}" Width="220" Height="60" FontSize="16" Click="btnAi_Click"/>
+            <Button x:Name="btnProducts" Content="Бар и магазин" Style="{StaticResource BtnMain}" Width="220" Height="60" FontSize="16" Click="btnProducts_Click"/>
+        </WrapPanel>
+    </Grid>
+</Page>

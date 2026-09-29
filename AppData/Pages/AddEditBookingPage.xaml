@@ -1,0 +1,70 @@
+﻿<Page x:Class="WPFbowlingKurs.AppData.Pages.AddEditBookingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFbowlingKurs.AppData.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="AddEditBookingPage">
+
+    <Grid Background="{StaticResource BackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource HeaderColor}">
+            <TextBlock x:Name="tbTitle" Text="Новое бронирование" FontSize="22" Margin="30,0,0,0" Foreground="#FF4E5E38"/>
+            <Button x:Name="btnBack" Content="Назад" Style="{StaticResource BtnMain}" Width="100" HorizontalAlignment="Right"
+                    Margin="0,0,20,0" Click="btnBack_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Width="560" HorizontalAlignment="Center" Margin="0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Клиент:" Grid.Row="0"/>
+            <ComboBox x:Name="cbClient" Grid.Row="0" Grid.Column="1" DisplayMemberPath="FullName" SelectedItem="{Binding Clients}"/>
+
+            <TextBlock Text="Дорожка:" Grid.Row="1"/>
+            <ComboBox x:Name="cbLane" Grid.Row="1" Grid.Column="1" DisplayMemberPath="LaneNumber" SelectedItem="{Binding Lanes}"
+                      SelectionChanged="cbLane_SelectionChanged"/>
+
+            <TextBlock Text="Дата игры:" Grid.Row="2"/>
+            <DatePicker x:Name="dpDate" Grid.Row="2" Grid.Column="1"/>
+
+            <TextBlock Text="Время (чч:мм):" Grid.Row="3"/>
+            <TextBox x:Name="tbTime" Grid.Row="3" Grid.Column="1"/>
+
+            <TextBlock Text="Длительность (мин):" Grid.Row="4"/>
+            <ComboBox x:Name="cbDuration" Grid.Row="4" Grid.Column="1" SelectionChanged="cbDuration_SelectionChanged"/>
+
+            <TextBlock Text="Способ оплаты:" Grid.Row="5"/>
+            <ComboBox x:Name="cbPayment" Grid.Row="5" Grid.Column="1" SelectedItem="{Binding PaymentMethod}"/>
+
+            <TextBlock Text="Статус:" Grid.Row="6"/>
+            <ComboBox x:Name="cbStatus" Grid.Row="6" Grid.Column="1" SelectedItem="{Binding Status}"/>
+
+            <TextBlock Text="Сумма:" Grid.Row="7"/>
+            <TextBlock x:Name="tbTotal" Grid.Row="7" Grid.Column="1" Margin="5,0" FontWeight="Bold" Text="0 руб."/>
+
+            <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource BtnMain}" Grid.Row="8" Grid.ColumnSpan="2"
+                    Width="200" Click="btnSave_Click"/>
+        </Grid>
+    </Grid>
+</Page>

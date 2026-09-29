@@ -1,0 +1,53 @@
+﻿<Page x:Class="WPFbowlingKurs.AppData.Pages.ClientBookingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WPFbowlingKurs.AppData.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="ClientBookingsPage" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid Background="{StaticResource BackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource HeaderColor}">
+            <TextBlock Text="Мои брони" FontSize="22" Margin="30,0,0,0" Foreground="#FF4E5E38"/>
+            <Button x:Name="btnBack" Content="В меню" Style="{StaticResource BtnMain}" Width="100" HorizontalAlignment="Right"
+                    Margin="0,0,20,0" Click="btnBack_Click"/>
+        </Grid>
+
+        <WrapPanel Grid.Row="1" Margin="10,5">
+            <CheckBox x:Name="chbOnlyActive" Content="Только предстоящие" IsChecked="True" Checked="chbOnlyActive_Changed"
+                      Unchecked="chbOnlyActive_Changed"/>
+        </WrapPanel>
+
+        <DataGrid x:Name="dgBookings" Grid.Row="2" Margin="15,5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding BookingNumber}" Width="80"/>
+                <DataGridTextColumn Header="Дорожка" Binding="{Binding Lanes.LaneNumber}" Width="80"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding Lanes.LaneTypes.Name}" Width="120"/>
+                <DataGridTextColumn Header="Начало" Binding="{Binding StartTime, StringFormat='dd.MM.yyyy HH:mm'}" Width="140"/>
+                <DataGridTextColumn Header="Минут" Binding="{Binding DurationMinutes}" Width="70"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding TotalAmount, StringFormat='{}{0:N2}'}" Width="100"/>
+                <DataGridTextColumn Header="Оплата" Binding="{Binding PaymentMethod}" Width="100"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="3" Margin="15,0,15,10">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnAdd" Content="Новая бронь" Style="{StaticResource BtnMain}" Width="150" Click="btnAdd_Click"/>
+                <Button x:Name="btnCheck" Content="Чек с QR" Style="{StaticResource BtnMain}" Width="130" Click="btnCheck_Click"/>
+                <Button x:Name="btnCancel" Content="Отменить бронь" Style="{StaticResource BtnMain}" Width="170"
+                        Background="#FFB24A3E" Click="btnCancel_Click"/>
+            </StackPanel>
+            <TextBlock x:Name="tbCount" HorizontalAlignment="Right"/>
+        </Grid>
+    </Grid>
+</Page>

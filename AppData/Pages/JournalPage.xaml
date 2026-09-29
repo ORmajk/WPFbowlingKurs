@@ -1,0 +1,39 @@
+﻿<Page x:Class="WPFbowlingKurs.AppData.Pages.JournalPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFbowlingKurs.AppData.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="JournalPage">
+
+    <Grid Background="{StaticResource BackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource HeaderColor}">
+            <TextBlock Text="Журнал действий" FontSize="22" Margin="30,0,0,0" Foreground="#FF4E5E38"/>
+            <Button x:Name="btnBack" Content="Назад" Style="{StaticResource BtnMain}" Width="100" HorizontalAlignment="Right"
+                    Margin="0,0,20,0" Click="btnBack_Click"/>
+        </Grid>
+
+        <WrapPanel Grid.Row="1" Margin="10,5">
+            <TextBlock Text="Сотрудник:" Margin="5"/>
+            <ComboBox x:Name="cbUser" Width="250" DisplayMemberPath="FullName" SelectionChanged="cbUser_SelectionChanged"/>
+            <Button x:Name="btnExport" Content="Экспорт в CSV" Style="{StaticResource BtnMain}" Width="150" Click="btnExport_Click"/>
+        </WrapPanel>
+
+        <DataGrid x:Name="dgActions" Grid.Row="2" Margin="15,5,15,15">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Время" Binding="{Binding Timestamp, StringFormat='dd.MM.yyyy HH:mm'}" Width="140"/>
+                <DataGridTextColumn Header="Сотрудник" Binding="{Binding Users.FullName}" Width="200"/>
+                <DataGridTextColumn Header="Действие" Binding="{Binding ActionType}" Width="170"/>
+                <DataGridTextColumn Header="Подробности" Binding="{Binding Details}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,18 @@
+﻿namespace WPFbowlingKurs.AppData
+{
+    using System;
+    using System.Collections.Generic;
+
+    public partial class InventoryItems
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string SizeOrWeight { get; set; }
+        public int StatusId { get; set; }
+        public int Quantity { get; set; }
+        public System.DateTime CreatedAt { get; set; }
+
+        public virtual InventoryStatuses InventoryStatuses { get; set; }
+    }
+}

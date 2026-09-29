@@ -1,0 +1,73 @@
+﻿<Page x:Class="WPFbowlingKurs.AppData.Pages.AddEditEventPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WPFbowlingKurs.AppData.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="AddEditEventPage">
+
+    <Grid Background="{StaticResource BackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource HeaderColor}">
+            <TextBlock x:Name="tbTitle" Text="Новое мероприятие" FontSize="22" Margin="30,0,0,0" Foreground="#FF4E5E38"/>
+            <Button x:Name="btnBack" Content="Назад" Style="{StaticResource BtnMain}" Width="100" HorizontalAlignment="Right"
+                    Margin="0,0,20,0" Click="btnBack_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Width="650" HorizontalAlignment="Center" Margin="0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Название:" Grid.Row="0"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
+
+            <TextBlock Text="Дата:" Grid.Row="1"/>
+            <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding EventDate}"/>
+
+            <CheckBox x:Name="chbAllLanes" Content="На всех дорожках клуба" Grid.Row="2" Grid.Column="1"
+                      Checked="chbAllLanes_Changed" Unchecked="chbAllLanes_Changed"/>
+
+            <TextBlock Text="Дорожка:" Grid.Row="3"/>
+            <ComboBox x:Name="cbLane" Grid.Row="3" Grid.Column="1">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding LaneNumber, StringFormat='№{0}'}"/>
+                            <Run Text="{Binding LaneTypes.Name}"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Text="Описание:" Grid.Row="4" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <TextBox x:Name="tbDescription" Grid.Row="4" Grid.Column="1" Text="{Binding Description}" Height="140"
+                     TextWrapping="Wrap" AcceptsReturn="True" VerticalContentAlignment="Top" MaxLength="500"
+                     VerticalScrollBarVisibility="Auto"/>
+
+            <Button x:Name="btnGenerate" Content="Сгенерировать описание (AI)" Style="{StaticResource BtnMain}" Grid.Row="5"
+                    Grid.Column="1" Width="280" HorizontalAlignment="Left" Background="{StaticResource MainColor}"
+                    Click="btnGenerate_Click"/>
+
+            <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource BtnMain}" Grid.Row="6" Grid.ColumnSpan="2"
+                    Width="200" Click="btnSave_Click"/>
+        </Grid>
+    </Grid>
+</Page>

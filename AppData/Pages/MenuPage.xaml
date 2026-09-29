@@ -1,0 +1,61 @@
+﻿<Page x:Class="WPFbowlingKurs.AppData.Pages.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFbowlingKurs.AppData.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="MenuPage" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid Background="{StaticResource BackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource HeaderColor}">
+            <TextBlock Text="Голден Страйк" FontSize="22" Margin="30,0,0,0" Foreground="#FF4E5E38"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock x:Name="tbUser" Margin="0,0,15,0"/>
+                <Button x:Name="btnExit" Content="Выход" Style="{StaticResource BtnMain}" Width="100" Margin="0,0,20,0"
+                        Click="btnExit_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <GroupBox Grid.Row="1" Header="Статистика клуба" Margin="20,10" FontFamily="Verdana" FontSize="14">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="tbAllLanes" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                <TextBlock x:Name="tbFreeLanes" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                <TextBlock x:Name="tbBusyLanes" Grid.Row="0" Grid.Column="2" Margin="5"/>
+                <TextBlock x:Name="tbRepairLanes" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                <TextBlock x:Name="tbTodayBookings" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                <TextBlock x:Name="tbMoney" Grid.Row="1" Grid.Column="2" Margin="5"/>
+            </Grid>
+        </GroupBox>
+
+        <WrapPanel Grid.Row="2" Margin="20,10" HorizontalAlignment="Center">
+            <Button x:Name="btnLanes" Content="Дорожки" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnLanes_Click"/>
+            <Button x:Name="btnBookings" Content="Бронирования" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnBookings_Click"/>
+            <Button x:Name="btnClients" Content="Клиенты" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnClients_Click"/>
+            <Button x:Name="btnInventory" Content="Инвентарь" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnInventory_Click"/>
+            <Button x:Name="btnProducts" Content="Бар и магазин" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnProducts_Click"/>
+            <Button x:Name="btnEvents" Content="Мероприятия" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnEvents_Click"/>
+            <Button x:Name="btnAwards" Content="Награды и баллы" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnAwards_Click"/>
+            <Button x:Name="btnAi" Content="AI-помощник" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnAi_Click"/>
+            <Button x:Name="btnMyAwards" Content="Мои баллы" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnMyAwards_Click"/>
+            <Button x:Name="btnUsers" Content="Сотрудники" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnUsers_Click"/>
+            <Button x:Name="btnJournal" Content="Журнал действий" Style="{StaticResource BtnMain}" Width="200" Height="60" FontSize="16" Click="btnJournal_Click"/>
+        </WrapPanel>
+    </Grid>
+</Page>

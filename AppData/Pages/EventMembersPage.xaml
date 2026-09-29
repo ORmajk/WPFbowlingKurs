@@ -1,0 +1,49 @@
+﻿<Page x:Class="WPFbowlingKurs.AppData.Pages.EventMembersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WPFbowlingKurs.AppData.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="EventMembersPage">
+
+    <Grid Background="{StaticResource BackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource HeaderColor}">
+            <TextBlock x:Name="tbTitle" Text="Участники мероприятия" FontSize="22" Margin="30,0,0,0" Foreground="#FF4E5E38"/>
+            <Button x:Name="btnBack" Content="Назад" Style="{StaticResource BtnMain}" Width="100" HorizontalAlignment="Right"
+                    Margin="0,0,20,0" Click="btnBack_Click"/>
+        </Grid>
+
+        <TextBlock x:Name="tbInfo" Grid.Row="1" Margin="20,10,20,5" TextWrapping="Wrap"/>
+
+        <WrapPanel Grid.Row="2" Margin="15,5">
+            <TextBlock Text="Клиент:" Margin="5"/>
+            <ComboBox x:Name="cbClient" Width="350" DisplayMemberPath="FullName" IsEditable="True" IsTextSearchEnabled="True"/>
+            <Button x:Name="btnAdd" Content="Записать" Style="{StaticResource BtnMain}" Width="130" Click="btnAdd_Click"/>
+        </WrapPanel>
+
+        <DataGrid x:Name="dgMembers" Grid.Row="3" Margin="15,5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding Clients.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Clients.Phone}" Width="180"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Clients.Email}" Width="220"/>
+                <DataGridTextColumn Header="Баллы" Binding="{Binding Clients.Points}" Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="4" Margin="15,0,15,10">
+            <Button x:Name="btnRemove" Content="Убрать из списка" Style="{StaticResource BtnMain}" Width="180"
+                    HorizontalAlignment="Left" Background="#FFB24A3E" Click="btnRemove_Click"/>
+            <TextBlock x:Name="tbCount" HorizontalAlignment="Right"/>
+        </Grid>
+    </Grid>
+</Page>
